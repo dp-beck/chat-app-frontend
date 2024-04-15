@@ -9,7 +9,7 @@ import Signup from './routes/signup.jsx';
 import Profile from './routes/profile.jsx';
 
 const loader = async () => {
-  const response = await fetch('http://localhost:3000/api/protected', {
+  const response = await fetch('https://chat-app-backend-o1po.onrender.com/api/protected', {
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
     }

@@ -9,7 +9,7 @@ export default function Root() {
     const [signedOut, setSignedOut ] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/users')
+        fetch('https://chat-app-backend-o1po.onrender.com/api/users')
             .then((res) => {
                 return res.json();
             })

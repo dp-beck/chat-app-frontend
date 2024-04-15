@@ -6,7 +6,7 @@ function Login() {
     const [user, setUser] = useState();
   
     const loginUser = (e) => {
-      fetch('http://localhost:3000/api/users/login', {
+      fetch('https://chat-app-backend-o1po.onrender.com/api/users/login', {
         method: 'POST',
         body: JSON.stringify({
           user_name: e.target[0].value,

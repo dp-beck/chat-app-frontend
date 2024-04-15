@@ -12,7 +12,7 @@ function Profile() {
     const [email, setEmail] = useState(user.email);
 
     const updateUser = () => {
-        fetch(`http://localhost:3000/api/users/${user._id}/update`, {
+        fetch(`https://chat-app-backend-o1po.onrender.com/api/users/${user._id}/update`, {
             method: 'POST',
             body: JSON.stringify({
               user_name: user.user_name,

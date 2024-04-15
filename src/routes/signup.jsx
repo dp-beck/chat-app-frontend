@@ -6,7 +6,7 @@ function Signup() {
     const [userCreated, setUserCreated] = useState(false);
 
     const createUser = (e) => {
-        fetch('http://localhost:3000/api/users/create', {
+        fetch('https://chat-app-backend-o1po.onrender.com/api/users/create', {
               method: 'POST',
               body: JSON.stringify({
                 user_name: e.target[0].value,

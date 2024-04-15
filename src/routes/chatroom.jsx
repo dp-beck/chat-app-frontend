@@ -3,7 +3,7 @@ import { useLocation, useOutletContext } from "react-router-dom";
 import { io } from "socket.io-client";
 
 //HAVE BASIC SOCKET CONNECTION ESTABLISHED NOW NEED TO MAKE IT WORK FOR ME
-const socket = io('http://localhost:3000/');
+const socket = io('https://chat-app-backend-o1po.onrender.com/');
 
 export default function Chatroom() {
     
@@ -14,11 +14,11 @@ export default function Chatroom() {
     const [ chatroomID, setChatroomID ] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
+        fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
             .then((res) => {
                 if (res.status === 404) {
                     setChatroomMessages([]);
-                    fetch(`http://localhost:3000/api/chatrooms/create`, {
+                    fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/create`, {
                         method: 'POST',
                         body: JSON.stringify({
                             user1: user._id,
@@ -47,7 +47,7 @@ export default function Chatroom() {
     }, [user.user_name, state.otherUser.user_name]);
 
     const createNewMessage = (e) => {
-        fetch(`http://localhost:3000/api/messages/create`, {
+        fetch(`https://chat-app-backend-o1po.onrender.com/api/messages/create`, {
             method: 'POST',
             body: JSON.stringify({
                 message: e.target[0].value,
@@ -64,7 +64,7 @@ export default function Chatroom() {
             return data._id;
         })
         .then((messageID) => {
-            fetch(`http://localhost:3000/api/chatrooms/${chatroomID}/update`, {
+            fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/${chatroomID}/update`, {
                 method: 'POST',
                 body: JSON.stringify({
                     newMessage: messageID,
