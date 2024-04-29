@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { useLocation, useOutletContext } from "react-router-dom";
 import { io } from "socket.io-client";
 
+const backendDev = 'http://localhost:3000';
+const backendProd = 'https://chat-app-backend-o1po.onrender.com';
+
 //HAVE BASIC SOCKET CONNECTION ESTABLISHED NOW NEED TO MAKE IT WORK FOR ME
-const socket = io('https://chat-app-backend-o1po.onrender.com/');
+const socket = io(backendDev);
 
 export default function Chatroom() {
     
@@ -14,11 +17,11 @@ export default function Chatroom() {
     const [ chatroomID, setChatroomID ] = useState();
 
     useEffect(() => {
-        fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
+        fetch(backendDev + `/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
             .then((res) => {
                 if (res.status === 404) {
                     setChatroomMessages([]);
-                    fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/create`, {
+                    fetch(backendDev + `/api/chatrooms/create`, {
                         method: 'POST',
                         body: JSON.stringify({
                             user1: user._id,
@@ -47,7 +50,7 @@ export default function Chatroom() {
     }, [user.user_name, state.otherUser.user_name]);
 
     const createNewMessage = (e) => {
-        fetch(`https://chat-app-backend-o1po.onrender.com/api/messages/create`, {
+        fetch(backendDev + `/api/messages/create`, {
             method: 'POST',
             body: JSON.stringify({
                 message: e.target[0].value,
@@ -64,7 +67,7 @@ export default function Chatroom() {
             return data._id;
         })
         .then((messageID) => {
-            fetch(`https://chat-app-backend-o1po.onrender.com/api/chatrooms/${chatroomID}/update`, {
+            fetch(backendDev + `/api/chatrooms/${chatroomID}/update`, {
                 method: 'POST',
                 body: JSON.stringify({
                     newMessage: messageID,
@@ -73,7 +76,7 @@ export default function Chatroom() {
                     "Content-Type": "application/json;charset=utf-8",
                 },
             })
-            socket.emit("newMessageSent", {id: messageID, timeStamp:new Date(), message: e.target[0].value, author: user.user_name});
+            socket.emit("chat message", {id: messageID, timeStamp:new Date(), message: e.target[0].value, author: user.user_name});
         })
         
     };
@@ -83,7 +86,7 @@ export default function Chatroom() {
         createNewMessage(e);
     };
 
-    socket.on('newMessageReceived', (arg) => {
+    socket.on('chat message', (arg) => {
         setChatroomMessages([...chatroomMessages, arg]);
     });
 

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, Outlet, Link, Navigate } from "react-router-dom";
 
+const backendDev = 'http://localhost:3000';
+const backendProd = 'https://chat-app-backend-o1po.onrender.com';
+
 export default function Root() {
     
     const user = useLoaderData();
@@ -9,7 +12,7 @@ export default function Root() {
     const [signedOut, setSignedOut ] = useState(false);
 
     useEffect(() => {
-        fetch('https://chat-app-backend-o1po.onrender.com/api/users')
+        fetch(backendDev + '/api/users')
             .then((res) => {
                 return res.json();
             })

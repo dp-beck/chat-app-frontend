@@ -1,14 +1,19 @@
 * {
     font-family: 'Courier New', Courier, monospace;
-    color: #092a3d; 
+    color: #44331e; 
 }
 
 body {
-    background-color: #f7e7d3;
+    background-color: #F6F5F2;
+}
+
+h2 {
+    margin: 0;
 }
 
 label {
     padding: 5px;
+    font-weight: 600;
 }
 
 input {
@@ -16,10 +21,20 @@ input {
 }
 
 input[type='submit'], button {
-    background-color: rgb(115, 206, 24);
+    background-color: #44331e;
     color: antiquewhite;
     font-weight: 600;
+    font-size: larger;
     border: 1px solid black;
+    width: 50%;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+input[type='submit']:hover, button:hover {
+    cursor:pointer;
+    background-color: darkgreen;
+
 }
 
 .login {
@@ -31,10 +46,16 @@ input[type='submit'], button {
 }
 
 .login_form {
-    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
     padding: 25px;
-    background-color: white;
+    background-color: #F0EBE3;
     box-shadow: 10px 10px 5px 0px #818D90;
+    width: 250px;
+    height: 300px;
 }
 
 .root {
