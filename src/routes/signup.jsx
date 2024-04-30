@@ -34,9 +34,10 @@ function Signup() {
     }
 
     return (
-        <>
-            <h1> Sign Up </h1>
+        <div className="signup">
+            <h1> Chat! </h1>
                 <form onSubmit={handleSubmit} className="signup_form">
+                    <h2>Sign Up!</h2>
                     <div className="signup_entry">
                       <label htmlFor="user_name">Username:</label>
                       <input type="text" name="user_name" id="user_name" />
@@ -65,7 +66,7 @@ function Signup() {
                     <input type="submit" value="Submit" />
                 </form>
                 {userCreated && <Navigate to='/login' replace={true}/>}
-        </>
+        </div>
     )
 }
 export default Signup;
