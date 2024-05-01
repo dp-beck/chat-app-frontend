@@ -7,8 +7,10 @@ const backendProd = 'https://chat-app-backend-o1po.onrender.com';
 function Signup() {
 
     const [userCreated, setUserCreated] = useState(false);
+    const [signupErrors, setSignupErrors] = useState([]);
 
     const createUser = (e) => {
+      try {
         fetch(backendDev + '/api/users/create', {
               method: 'POST',
               body: JSON.stringify({
@@ -23,9 +25,16 @@ function Signup() {
               },
             }).then((res) => {
               return res.json();
-            }).then(() => {
+            }).then((data) => {
+              if (data.errors) {
+                setSignupErrors(data.errors);
+              } else {
                 setUserCreated(true);
+              }
             })
+          } catch (error) {
+            console.error('Fetch', error);
+          }
     }
 
     const handleSubmit = (e) => {
@@ -65,6 +74,9 @@ function Signup() {
                     
                     <input type="submit" value="Submit" />
                 </form>
+                <ul>
+                  {signupErrors.map(error => <li className="signupErrors" key={signupErrors.indexOf(error)}>{error.msg}</li>)}
+                </ul>
                 {userCreated && <Navigate to='/login' replace={true}/>}
         </div>
     )
