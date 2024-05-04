@@ -5,7 +5,6 @@ import { io } from "socket.io-client";
 const backendDev = 'http://localhost:3000';
 const backendProd = 'https://chat-app-backend-o1po.onrender.com';
 
-//HAVE BASIC SOCKET CONNECTION ESTABLISHED NOW NEED TO MAKE IT WORK FOR ME
 const socket = io(backendDev);
 
 export default function Chatroom() {
@@ -95,7 +94,7 @@ export default function Chatroom() {
             <h2>Chatroom: {user.user_name} & {state.otherUser.user_name}</h2>
             <ul className="chat_list">
                 {chatroomMessages.map((message) => 
-                    <li key={message.id}><span className="msg_author">{message.author}:</span> {message.message}</li>)}
+                    <li key={message.id}><span className="msg_author">{message.author}:</span> {message.message} <span className="time">{` (${message.timeStamp.slice(0,9)})`}</span></li>)}
             </ul>
             <form onSubmit={handleSubmit} className="send_message">
                 <label htmlFor="new_message"></label>

@@ -113,6 +113,11 @@ input[type='submit']:hover, button:hover {
     flex-grow: 2;
 }
 
+.time {
+    font-style: oblique;
+    color: grey;
+}
+
 .signout_button {
     margin-bottom: 15px;
 }
