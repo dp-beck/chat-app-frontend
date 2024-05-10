@@ -12,7 +12,7 @@ const backendDev = 'http://localhost:3000';
 const backendProd = 'https://chat-app-backend-o1po.onrender.com';
 
 const loader = async () => {
-  const response = await fetch(backendDev + '/api/protected', {
+  const response = await fetch(backendProd + '/api/protected', {
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
     }

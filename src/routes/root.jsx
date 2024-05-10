@@ -12,7 +12,7 @@ export default function Root() {
     const [signedOut, setSignedOut ] = useState(false);
 
     useEffect(() => {
-        fetch(backendDev + '/api/users')
+        fetch(backendProd + '/api/users')
             .then((res) => {
                 return res.json();
             })

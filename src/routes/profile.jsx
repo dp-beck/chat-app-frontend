@@ -15,7 +15,7 @@ function Profile() {
     const [email, setEmail] = useState(user.email);
 
     const updateUser = () => {
-        fetch(backendDev + `/api/users/${user._id}/update`, {
+        fetch(backendProd + `/api/users/${user._id}/update`, {
             method: 'POST',
             body: JSON.stringify({
               user_name: user.user_name,

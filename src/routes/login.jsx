@@ -16,7 +16,7 @@ function Login() {
   
     const loginUser = (e) => {
       try {
-        fetch(backendDev + '/api/users/login', {
+        fetch(backendProd + '/api/users/login', {
           method: 'POST',
           body: JSON.stringify({
             user_name: e.target[0].value,

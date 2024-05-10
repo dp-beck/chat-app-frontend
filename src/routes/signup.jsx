@@ -11,7 +11,7 @@ function Signup() {
 
     const createUser = (e) => {
       try {
-        fetch(backendDev + '/api/users/create', {
+        fetch(backendProd + '/api/users/create', {
               method: 'POST',
               body: JSON.stringify({
                 user_name: e.target[0].value,
