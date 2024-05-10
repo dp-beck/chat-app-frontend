@@ -39,7 +39,7 @@ function Profile() {
     }
 
     return (
-        <div>
+        <div className="user_profile">
             <h1>User Profile: {user.user_name}</h1>
             <form onSubmit={handleSubmit} className="manage_profile_form">
               
