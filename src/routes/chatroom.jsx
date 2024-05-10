@@ -76,6 +76,7 @@ export default function Chatroom() {
                 },
             })
             socket.emit("chat message", {id: messageID, timeStamp:new Date(), message: e.target[0].value, author: user.user_name});
+            e.target[0].value = '';
         })
         
     };
