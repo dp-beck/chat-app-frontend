@@ -11,6 +11,7 @@ You can access the site at [Chat!](https://chat-app-frontend-0wt0.onrender.com/)
 * **React Router** - React library to handle client-side routing.
 * **CSS Flexbox** - CSS layout module for building a responsive visual layout for the application.
 * **Socekt.io** - Event-driven library for handling realtime communication between client and server; enables chat messages to be sent and received in real time.
+* **Render** - Cloud service used to host the application.
 
 ## Back-End Information
 
