@@ -7,5 +7,7 @@ if (devState === true) {
     url = 'https://chat-app-backend-o1po.onrender.com';
 };
 
-export {url};
+console.log(url);
+
+export default url;
 
