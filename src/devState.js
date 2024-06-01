@@ -1,4 +1,4 @@
-let devState = true;
+let devState = false;
 let url;
 
 if (devState === true) {
