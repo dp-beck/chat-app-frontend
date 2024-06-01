@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { useLoaderData, Navigate } from "react-router-dom";
-
-const backendDev = 'http://localhost:3000';
-const backendProd = 'https://chat-app-backend-o1po.onrender.com';
-
+import url from '../devState';
 function Profile() {
 
     const user = useLoaderData();
@@ -15,7 +12,7 @@ function Profile() {
     const [email, setEmail] = useState(user.email);
 
     const updateUser = () => {
-        fetch(backendProd + `/api/users/${user._id}/update`, {
+        fetch(url + `/api/users/${user._id}/update`, {
             method: 'POST',
             body: JSON.stringify({
               user_name: user.user_name,

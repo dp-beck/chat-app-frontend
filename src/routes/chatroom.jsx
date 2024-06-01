@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation, useOutletContext } from "react-router-dom";
 import { io } from "socket.io-client";
+import url from '../devState';
 
-const backendDev = 'http://localhost:3000';
-const backendProd = 'https://chat-app-backend-o1po.onrender.com';
-
-const socket = io(backendProd);
+const socket = io(url);
 
 export default function Chatroom() {
     
@@ -16,11 +14,11 @@ export default function Chatroom() {
     const [ chatroomID, setChatroomID ] = useState();
 
     useEffect(() => {
-        fetch(backendProd + `/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
+        fetch(url + `/api/chatrooms/${user.user_name}/${state.otherUser.user_name}`)
             .then((res) => {
                 if (res.status === 404) {
                     setChatroomMessages([]);
-                    fetch(backendProd + `/api/chatrooms/create`, {
+                    fetch(url + `/api/chatrooms/create`, {
                         method: 'POST',
                         body: JSON.stringify({
                             user1: user._id,
@@ -49,7 +47,7 @@ export default function Chatroom() {
     }, [user.user_name, state.otherUser.user_name]);
 
     const createNewMessage = (e) => {
-        fetch(backendProd + `/api/messages/create`, {
+        fetch(url + `/api/messages/create`, {
             method: 'POST',
             body: JSON.stringify({
                 message: e.target[0].value,
@@ -66,7 +64,7 @@ export default function Chatroom() {
             return data._id;
         })
         .then((messageID) => {
-            fetch(backendProd + `/api/chatrooms/${chatroomID}/update`, {
+            fetch(url + `/api/chatrooms/${chatroomID}/update`, {
                 method: 'POST',
                 body: JSON.stringify({
                     newMessage: messageID,

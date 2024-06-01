@@ -7,12 +7,10 @@ import Login from './routes/login.jsx';
 import Chatroom from './routes/chatroom.jsx';
 import Signup from './routes/signup.jsx';
 import Profile from './routes/profile.jsx';
-
-const backendDev = 'http://localhost:3000';
-const backendProd = 'https://chat-app-backend-o1po.onrender.com';
+import url from './devState.js';
 
 const loader = async () => {
-  const response = await fetch(backendProd + '/api/protected', {
+  const response = await fetch(url + '/api/protected', {
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
     }

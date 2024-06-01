@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-
-const backendDev = 'http://localhost:3000';
-const backendProd = 'https://chat-app-backend-o1po.onrender.com';
+import url from '../devState';
 
 function Signup() {
 
@@ -11,7 +9,7 @@ function Signup() {
 
     const createUser = (e) => {
       try {
-        fetch(backendProd + '/api/users/create', {
+        fetch(url + '/api/users/create', {
               method: 'POST',
               body: JSON.stringify({
                 user_name: e.target[0].value,

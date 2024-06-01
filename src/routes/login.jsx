@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-
-const backendDev = 'http://localhost:3000';
-const backendProd = 'https://chat-app-backend-o1po.onrender.com';
+import url from '../devState';
 
 const wrongInfoMsgStyle = {
   color: 'red',
@@ -16,7 +14,7 @@ function Login() {
   
     const loginUser = (e) => {
       try {
-        fetch(backendProd + '/api/users/login', {
+        fetch(url + '/api/users/login', {
           method: 'POST',
           body: JSON.stringify({
             user_name: e.target[0].value,
