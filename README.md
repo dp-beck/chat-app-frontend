@@ -1,5 +1,10 @@
 # Chat! (Front-End)
 
+## Important Note
+Chat! is hosted for FREE on Render. Render spins down a free web service that goes 15 minutes without receiving any inbound traffic. Render spins the service back up whenever it next receives a request to process.
+
+Spinning up a service takes up to a minute, which causes a noticeable delay for incoming requests until the service is back up and running. IT MAY TAKE UP TO ONE MINUTE FOR THE APPLICATION TO LOAD, UPON START UP. Please be patient. 
+
 ## Description
 Chat! is a no-frills realtime chat application that supports two-person conversations between registered users.
 
