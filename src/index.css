@@ -1,10 +1,10 @@
 * {
     font-family: 'Courier New', Courier, monospace;
-    color: #44331e; 
 }
 
 body {
-    background-color: #F6F5F2;
+    color: #44331e; 
+    background-color: rgb(239, 244, 243);
 }
 
 h2 {
@@ -37,7 +37,36 @@ input[type='submit']:hover, button:hover {
 
 }
 
-.login, .signup, .user_profile {
+.login {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1fr, 4fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.login_header {
+    grid-column: 1 / span 2;
+}
+
+.login_welcome_message_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.login_form_and_messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup, .user_profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,16 +75,17 @@ input[type='submit']:hover, button:hover {
 }
 
 .login_form, .signup_form, .manage_profile_form {
+    color:#ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
     padding: 25px;
-    background-color: #F0EBE3;
+    background-color: #491ec1;
     box-shadow: 10px 10px 5px 0px #818D90;
-    width: 250px;
-    height: 300px;
+    width: 75%;
+    height: 75%;
     min-width: 250px;
 }
 
