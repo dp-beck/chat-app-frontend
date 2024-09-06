@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import Root from './routes/root.jsx';
 import Login from './routes/login.jsx';

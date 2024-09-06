@@ -51,40 +51,68 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <h1 className="login_header">Chat!</h1>
+    <div className="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div className="row align-items-center g-lg-5 py-5">
+        <div className="col-lg-7 text-center text-lg-start">
+          <h1 className="display-4 fw-bold lh-1 text-body-emphasis mb-3">
+            Welcome to Chat!
+          </h1>
+          <p className="col-lg-10 fs-4">
+            A simple realtime chat application that you can use
+            to chat with any user at any time. Log in or sign up to get started
+            and start Chatting!
+          </p>
+        </div>
 
-      <div className="login_welcome_message_container">
-        <p className="login_welcome_message">
-          Welcome to Chat! A simple realtime chat application that you can use
-          to chat with any user at any time. Log in or sign up to get started
-          and start Chatting!
-        </p>
-      </div>
-      
-      <div className="login_form_and_messages">
-        <form onSubmit={handleSubmit} className="login_form">
-          <h2>Welcome Back!</h2>
-          <label htmlFor="user_name">Username:</label>
-          <input type="text" name="user_name" id="user_name" />
+        <div className="col-md-10 mx-auto col-lg-5">
+          <form
+            onSubmit={handleSubmit}
+            className="p-4 p-md-5 border rounded-3 bg-body-tertiary"
+          >
+            <div className="form-floating mb-3">
+              <input
+                type="text"
+                className="form-control"
+                name="user_name"
+                id="user_name"
+                placeholder="name"
+              />
+              <label htmlFor="user_name">Username:</label>
+            </div>
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" />
+            <div className="form-floating mb-3">
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                id="password"
+                placeholder="password"
+              />
+              <label htmlFor="password">Password:</label>
+            </div>
 
-          <input type="submit" value="Log In" />
-        </form>
-        {wrongInfoMsg && (
-          <p style={wrongInfoMsgStyle}>Wrong username or password entered.</p>
-        )}
-        {/* eslint-disable-next-line react/no-unescaped-entities*/}
-        <p>
-          Don't have an account? <Link to="/signup">Sign up here</Link>
-        </p>
-        <p>
-          You can also log in as our test account. Username is 'test.' Password
-          is 'testtest.'{" "}
-        </p>
-        {user && <Navigate to="/" replace={true} />}
+            <input
+              className="w-100 btn btn-lg btn-primary"
+              type="submit"
+              value="Log In"
+            />
+
+            <hr className="my-4" />
+            {/* eslint-disable-next-line react/no-unescaped-entities*/}
+            <small className="text-body-secondary">
+              Don't have an account? <Link to="/signup">Sign up here</Link>
+            </small>
+          </form>
+          {wrongInfoMsg && (
+            <p style={wrongInfoMsgStyle}>Wrong username or password entered.</p>
+          )}
+
+          <p>
+            You can also log in as our test account. Username is 'test.'
+            Password is 'testtest.'{" "}
+          </p>
+          {user && <Navigate to="/" replace={true} />}
+        </div>
       </div>
     </div>
   );
