@@ -26,20 +26,60 @@ export default function Root() {
     };
 
     return (
-        <div className="root">
-            <h1>Welcome to Chat App, {user.user_name}!</h1>
-            <h2>Who do you want to chat with?</h2>
-            <ul className="user_list">
-                {userList.map((user) => <li key={user._id}>
-                        <Link to={`chatroom/${user._id}`} state={{otherUser: user}}>{user.user_name}</Link>
-                    </li>)}
+      <div className="root">
+        <div className="container">
+          <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <h1 className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+              Welcome to Chat, {user.user_name}!
+            </h1>
+            <ul className="nav nav-pills">
+              <li className="nav-item">
+                <button onClick={signOut} className="nav-link">
+                  Sign Out
+                </button>
+              </li>
+              <li className="nav-item">
+                <Link to={`user/${user._id}`} className="nav-link">
+                  Manage Profile
+                </Link>
+              </li>
             </ul>
-            <div>
-                <Outlet context={user}/>
-            </div>
-            <button onClick={signOut} className="signout_button">Sign Out</button>
-            {signedOut && (<Navigate to='/' replace={true}/>)}
-            <Link to={`user/${user._id}`}>Manage Profile</Link>
+          </header>
         </div>
+        <main className="container">
+          <div className="row">
+            <div
+              className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"
+              style={{ width: "280px" }}
+            >
+              <h2 className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                Who do you want to chat with?
+              </h2>
+              <hr />
+              <ul className="nav nav-pills flex-column mb-auto">
+                {userList.map((user) => (
+                  <li key={user._id} className="nav-item">
+                    <Link
+                      to={`chatroom/${user._id}`}
+                      state={{ otherUser: user }}
+                      className="nav-link"
+                    >
+                      {user.user_name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="col bg-body-tertiary">
+                <Outlet context={user} />
+            </div>
+
+          </div>
+
+        </main>
+
+        {signedOut && <Navigate to="/" replace={true} />}
+      </div>
     );
   }

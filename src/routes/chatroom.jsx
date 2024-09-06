@@ -89,7 +89,7 @@ export default function Chatroom() {
     });
 
     return (
-        <div id="chatroom">
+        <div className="overflow-auto" style={{ height: "100vh" }}>
             <h2>Chatroom: {user.user_name} & {state.otherUser.user_name}</h2>
             <ul className="chat_list">
                 {chatroomMessages.map((message) => 
