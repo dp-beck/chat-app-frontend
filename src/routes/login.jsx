@@ -11,13 +11,13 @@ function Login() {
   const [user, setUser] = useState();
   const [wrongInfoMsg, setWrongInfoMsg] = useState(false);
 
-  const loginUser = (e) => {
+  const loginUser = (user_name, password) => {
     try {
       fetch(url + "/api/users/login", {
         method: "POST",
         body: JSON.stringify({
-          user_name: e.target[0].value,
-          password: e.target[1].value,
+          user_name: user_name,
+          password: password,
         }),
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -37,7 +37,7 @@ function Login() {
           }
         })
         .then((data) => {
-          setUser(e.target[0].value);
+          setUser(user_name);
           localStorage.setItem("token", data.token);
         });
     } catch (error) {
@@ -47,7 +47,11 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginUser(e);
+    loginUser(e.target[0].value, e.target[1].value);
+  };
+
+  const testLogIn = () => {
+    loginUser("TestGuy98", "testtest");
   };
 
   return (
@@ -102,15 +106,16 @@ function Login() {
             <small className="text-body-secondary">
               Don't have an account? <Link to="/signup">Sign up here</Link>
             </small>
+            <hr />
+            <small className="text-body-secondary">
+              Want to use a test account to explore?
+              <button className="btn btn-link" onClick={testLogIn}>Click here</button>
+            </small>
           </form>
           {wrongInfoMsg && (
             <p style={wrongInfoMsgStyle}>Wrong username or password entered.</p>
           )}
 
-          <p>
-            You can also log in as our test account. Username is 'test.'
-            Password is 'testtest.'{" "}
-          </p>
           {user && <Navigate to="/" replace={true} />}
         </div>
       </div>
